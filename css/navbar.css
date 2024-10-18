@@ -1,0 +1,159 @@
+/* Navbar Styles */
+header {
+    background-color: #1e2a38; /* Dark navy blue background */
+    color: #ffffff; /* White text color */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px; /* Padding around the navbar */
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for a lifted effect */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition for background color and shadow */
+}
+
+.navbar .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #f39c12; /* Bright orange color */
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+.logo:hover {
+    color: #f1c40f; /* Light yellow color on hover */
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s; /* Smooth transition for the hamburger icon */
+}
+
+.hamburger {
+    width: 30px;
+    height: 2px;
+    background-color: #ffffff;
+    position: relative;
+    transition: background-color 0.3s;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: "";
+    width: 30px;
+    height: 2px;
+    background-color: #ffffff;
+    position: absolute;
+    left: 0;
+    transition: background-color 0.3s; /* Smooth transition for the before and after pseudo-elements */
+}
+
+.hamburger::before {
+    top: -8px;
+}
+
+.hamburger::after {
+    top: 8px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-left: 25px; /* Space between menu items */
+    position: relative; /* Required for the pseudo-element */
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Smooth transitions for hover effects */
+}
+
+.nav-links a:hover {
+    background-color: #f39c12; /* Orange background color on hover */
+    color: #ffffff;
+    transform: scale(1.05); /* Slightly larger size on hover */
+}
+
+/* Adding underline animation on hover */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background: #f39c12; /* Orange underline color */
+    transition: width 0.3s; /* Smooth transition for underline width */
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #1e2a38; /* Match header background */
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transform: translateY(-20px);
+        opacity: 0;
+        transition: opacity 0.3s, transform 0.3s; /* Smooth transition for dropdown visibility */
+    }
+
+    .nav-links.active {
+        display: flex;
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-toggle.active .hamburger {
+        background-color: transparent; /* Change hamburger icon color when active */
+    }
+
+    .nav-toggle.active .hamburger::before {
+        transform: rotate(45deg); /* Rotate icon to X on active */
+    }
+
+    .nav-toggle.active .hamburger::after {
+        transform: rotate(-45deg); /* Rotate icon to X on active */
+    }
+}
